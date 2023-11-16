@@ -2,14 +2,14 @@
 
 ## 조원 소개
 
-| 학번      | 이름                                                                                                             | 역할 |
-| --------- | ---------------------------------------------------------------------------------------------------------------- | ---- |
-| -         | <b>📣정성민(<a href="https://github.com/qwer1227/wireless-network--4-/commits?author=qwer1227">qwer1227</a>)</b> | -    |
-| -         | 박상원(<a href="https://github.com/qwer1227/wireless-network--4-/commits?author=qarksangwon">qarksangwon</a>)    | -    |
-| 201944030 | 반진성(<a href="https://github.com/qwer1227/wireless-network--4-/commits?author=banjinseong">banjinseong</a>)    | -    |
-| 201944027 | 김상헌(<a href="https://github.com/qwer1227/wireless-network--4-/commits?author=inhaexpress">inhaexpress</a>)    | -    |
-| 201844021 | 오주헌(<a href="https://github.com/qwer1227/wireless-network--4-/commits?author=dhwngjs01">dhwngjs01</a>)        | -    |
-| -         | 신수민(<a href="https://github.com/qwer1227/wireless-network--4-/commits?author=StarlightSSM">StarlightSSM</a>)  | -    |
+| 학번      | 이름                                                                                                            | 역할 |
+| --------- | --------------------------------------------------------------------------------------------------------------- | ---- |
+| -         | <b>정성민(<a href="https://github.com/qwer1227/wireless-network--4-/commits?author=qwer1227">qwer1227</a>)</b>  | -    |
+| -         | 박상원(<a href="https://github.com/qwer1227/wireless-network--4-/commits?author=qarksangwon">qarksangwon</a>)   | -    |
+| 201944030 | 반진성(<a href="https://github.com/qwer1227/wireless-network--4-/commits?author=banjinseong">banjinseong</a>)   | -    |
+| 201944027 | 김상헌(<a href="https://github.com/qwer1227/wireless-network--4-/commits?author=inhaexpress">inhaexpress</a>)   | -    |
+| 201844021 | 오주헌(<a href="https://github.com/qwer1227/wireless-network--4-/commits?author=dhwngjs01">dhwngjs01</a>)       | -    |
+| -         | 신수민(<a href="https://github.com/qwer1227/wireless-network--4-/commits?author=StarlightSSM">StarlightSSM</a>) | -    |
 
 ## 인공지능 운동 도우미
 
@@ -19,15 +19,13 @@
 
 ### 목표
 
-```markdown
 1. 운동 동작 카운팅에 초점을 맞추어 시간과 횟수에 대한 목표치를 설정할 수 있게 하며, 달성률을 정리해주는 기능을 개발합니다.
 2. 사용자 간 경쟁 요소를 도입하여 게임기의 랭킹 시스템과 같이 점수를 저장할 수 있는 기능을 개발합니다.
 3. 가능하다면, 실시간으로 사용자들이 서로 대결할 수 있는 기능까지 개발하는 것을 목표로 합니다.
-```
 
 ## Teachable Machine
 
-<p style="text-align:center">
+<p align="center">
   <img src ="https://github.com/qwer1227/wireless-network--4-/assets/113282148/eeb66d84-a27f-4bb6-b42d-628299fbe734" />
 </p>
 
@@ -50,9 +48,6 @@
 ## 참고자료
 
 - <a href="https://teachablemachine.withgoogle.com/">Teachable Machine</a>
-
-- <a href="https://pickmeplease.tistory.com/entry/%EC%9B%B9%EA%B0%9C%EB%B0%9C-DIOS-Teachable-Machine-%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EC%9A%B4%EB%8F%99-%EA%B0%9C%EC%88%98-%EC%84%B8%EB%8A%94-%ED%8E%98%EC%9D%B4%EC%A7%80">[웹개발 - DIOS] Teachable Machine 를 이용한 운동 횟수 세는 페이지</a>
-
+- <a href="https://pickmeplease.tistory.com/entry/%EC%9B%B9%EA%B0%9C%EB%B0%9C-DIOS-Teachable-Machine-%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EC%9A%B4%EB%8F%99-%EA%B0%9C%EC%88%98-%EC%84%B8%EB%8A%94-%ED%8E%98%EC%9D%B4%EC%A7%80">[웹개발 - DIOS] Teachable Machine를 이용한 운동 횟수 세는 페이지</a>
 - <a href="https://www.tensorflow.org/lite/examples/pose_estimation/overview?hl=ko">TensorFlow 포즈 추정</a>
-
-- <a href="https://github.com/yesfordev/homedong">HomeDong ( 모두가 건강하게 집에서 즐길 수 있는 운동 게임 )</a>
+- <a href="https://github.com/yesfordev/homedong">HomeDong (모두가 건강하게 집에서 즐길 수 있는 운동 게임)</a>
