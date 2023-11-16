@@ -3,10 +3,10 @@
   "tmVersion": "0.8.6",
   "packageVersion": "0.8.6",
   "packageName": "@teachablemachine/pose",
-  "timeStamp": "2023-11-09T13:08:13.964Z",
+  "timeStamp": "2023-11-16T14:25:49.916Z",
   "userMetadata": {},
   "modelName": "my-pose-model",
-  "labels": ["Up", "Down"],
+  "labels": ["up", "down"],
   "modelSettings": {
     "posenet": {
       "architecture": "MobileNetV1",
