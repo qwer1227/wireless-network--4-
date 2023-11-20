@@ -2,14 +2,22 @@
 
 💪운동 도우미 시스템
 
-## 🎯목적
+## 🎯 목적
 
 - 카메라와 인공지능 기술을 결합하여 사용자의 운동을 장려하는 시스템을 개발하고자 합니다.
 
-### 👥조원
+## 👥 조원
 
-- 조장 : 정성민 (qwer1227)
-- 조원 : 박상원 (qarksangwon), 반진성 (banjinseong), 김상헌 (inhaexpress), 오주헌 (dhwngjs01), 신수민 (StarlightSSM)
+- 조장
+  - 정성민 (qwer1227)
+    
+- 조원
+  
+  - 박상원 (qarksangwon)
+  - 반진성 (banjinseong)
+  - 김상헌 (inhaexpress)
+  - 오주헌 (dhwngjs01)
+  - 신수민 (StarlightSSM)
 
 ## 🔧주요 기능
 
@@ -42,7 +50,7 @@ JavaScript, db(firebase)
 
   |                          푸쉬업                           |                          스쿼트                           |                             버피                              |                          런지                           |
   | :-------------------------------------------------------: | :-------------------------------------------------------: | :-----------------------------------------------------------: | :-----------------------------------------------------: |
-  | <img width="150" height="150" src="./아이콘/푸쉬업.png"/> | <img width="150" height="150" src="./아이콘/스쿼트.jpg"/> | <img width="150" height="150" src="./아이콘/버피테스트.jpg"/> | <img width="150" height="150" src="./아이콘/런지.jpg"/> |
+  | <img width="150" height="150" src="./아이콘/푸쉬업.jpg"/> | <img width="150" height="150" src="./아이콘/스쿼트.jpg"/> | <img width="150" height="150" src="./아이콘/버피테스트.jpg"/> | <img width="150" height="150" src="./아이콘/런지.jpg"/> |
 
   </div>
 
@@ -59,7 +67,7 @@ JavaScript, db(firebase)
 ## 전체 UI 화면
 
   <div align="center">
-    <img width="353" height="625" src="./ui/전체흐름.PNG"/>
+    <img width="500" src="./ui/전체흐름.png"/>
   </div>
 
 ## 파이어베이스 SDK모듈 가져오기
