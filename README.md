@@ -76,3 +76,8 @@ JavaScript, db(firebase)
   ![firebase_save](https://github.com/qwer1227/wireless-network--4-/assets/113608501/1e337955-d243-487f-a1f3-f47963cbc5c4)
   
   Firebase 앱을 초기화하고 앱 객체를 생성하며 push 함수를 사용하여 데이터를 추가합니다.
+
+## 파이어베이스 저장 결과
+  ![image](https://github.com/qwer1227/wireless-network--4-/assets/113608501/cfd617d6-40d4-4d46-8af9-2e83623e8e8d)
+
+  push 함수를 통해 realtime데이터베이스에 값이 정상적으로 들어갔음을 보여주는 이미지입니다.
