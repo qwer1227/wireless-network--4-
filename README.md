@@ -34,3 +34,6 @@ JavaScript, db(firebase)
 
 * 점수 버튼
   <img width="150" height="150" src="./아이콘/점수아이콘.jpg">
+
+## 전체 UI 화면
+<img width="150" height="150" src="./ui/전체흐름.png"></img>
