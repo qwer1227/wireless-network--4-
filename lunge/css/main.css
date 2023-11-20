@@ -1,0 +1,31 @@
+button {
+  padding: 10px 20px;
+}
+
+#clock {
+  font-size: 50px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+#container {
+  text-align: center;
+}
+
+#log-container {
+  margin-top: 20px;
+}
+
+#notice {
+  background-color: #f00;
+  color: #ff0;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.log {
+  margin: 0;
+  padding: 0;
+
+  line-height: 150%;
+}
