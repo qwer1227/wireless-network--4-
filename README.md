@@ -23,7 +23,12 @@
 ## 💻개발 환경
 JavaScript, db(firebase)
 
-## UI 아이콘 설정(논의 필요)
+## ✔UI 아이콘 설정(논의 필요)
 ## 메인 화면
 * 운동 선택 버튼 4개(푸쉬업, 스쿼트, 버피, 런지) 각각 아이콘으로 표시
 * 4개의 버튼 각각 옆에 점수 버튼을 표시
+<img width="200" height="200" src="./아이콘/푸쉬업.png"></img><img width="200" height="200" src="./아이콘/스쿼트.jpg"></img>
+<img width="200" height="200" src="./아이콘/버피테스트.jpg"></img><img width="200" height="200" src="./아이콘/런지.jpg"></img>
+
+* 점수 버튼
+<img width="200" height="200" src="./아이콘/점수아이콘.jpg">
