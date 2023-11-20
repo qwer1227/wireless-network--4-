@@ -61,3 +61,18 @@ JavaScript, db(firebase)
   <div align="center">
     <img width="353" height="625" src="./ui/전체흐름.PNG"/>
   </div>
+
+## 파이어베이스 SDK모듈 가져오기
+  ![firebase_sdk](https://github.com/qwer1227/wireless-network--4-/assets/113608501/77445cdb-253f-4004-8090-b7531bfed861)
+  
+  Firebase 모듈에서 initializeApp 함수를 가져와 Firebase 앱을 초기화하고, 데이터베이스 조작을 위해 필요한 함수들을 가져옵니다.
+
+## 파이어베이스 설정
+  ![firebase_config](https://github.com/qwer1227/wireless-network--4-/assets/113608501/6603cf5a-bc7b-491f-9800-b24a07f8eb8b)
+  
+  Firebase 앱을 초기화할 때 필요한 설정 정보를 담은 객체입니다. 이 정보는 Firebase 프로젝트 설정에서 얻을 수 있으며, API 키, 프로젝트 ID, 데이터베이스 URL 등이 포함되어 있습니다.
+
+## 파이어베이스 초기화 및 데이터 추가
+  ![firebase_save](https://github.com/qwer1227/wireless-network--4-/assets/113608501/1e337955-d243-487f-a1f3-f47963cbc5c4)
+  
+  Firebase 앱을 초기화하고 앱 객체를 생성하며 push 함수를 사용하여 데이터를 추가합니다.
