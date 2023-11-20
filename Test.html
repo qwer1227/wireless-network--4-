@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teachable Machine Pose Model with Firebase</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+        import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBGhiclax0v6Onvo1iozBuwUOYrShbbqkI",
+            authDomain: "wireless-project-4.firebaseapp.com",
+            databaseURL: "https://wireless-project-4-default-rtdb.firebaseio.com",
+            projectId: "wireless-project-4",
+            storageBucket: "wireless-project-4.appspot.com",
+            messagingSenderId: "232862239959",
+            appId: "1:232862239959:web:b47a6fa0e315378e263492",
+            measurementId: "G-1DFMELVGLH"
+        };
+
+        // Firebase 초기화
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        // Realtime Database에 데이터 저장 함수
+        function saveCountToFirebase(count) {
+            const countRef = ref(database, 'dumbbellCurlCount');
+
+            // push() 함수를 사용하여 고유한 키로 데이터 저장
+            push(countRef, {
+                count: count,
+                timestamp: Date.now()
+            });
+        }
+
+        let model, webcam, ctx, labelContainer, maxPredictions;
+
+        async function init() {
+            const URL = "https://teachablemachine.withgoogle.com/models/7Vq-6gy5B/";
+            const modelURL = URL + "model.json";
+            const metadataURL = URL + "metadata.json";
+
+            model = await tmPose.load(modelURL, metadataURL);
+            maxPredictions = model.getTotalClasses();
+
+            const size = 200;
+            const flip = true;
+            webcam = new tmPose.Webcam(size, size, flip);
+            await webcam.setup();
+            await webcam.play();
+
+            const canvas = document.getElementById("canvas");
+            canvas.width = size;
+            canvas.height = size;
+            ctx = canvas.getContext("2d");
+            labelContainer = document.getElementById("label-container");
+            for (let i = 0; i < maxPredictions; i++) {
+                labelContainer.appendChild(document.createElement("div"));
+            }
+            labelContainer.appendChild(document.createElement("div"));
+
+            // 루프 시작
+            loop();
+        }
+
+        async function loop() {
+            webcam.update();
+            await predict();
+            window.requestAnimationFrame(loop);
+        }
+
+        var status = "stand";
+        var count = 0;
+
+        async function predict() {
+            const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
+            const prediction = await model.predict(posenetOutput);
+
+            if (prediction[0].probability.toFixed(2) >= 0.9) {
+                status = "stand";
+            } else if (prediction[1].probability.toFixed(2) >= 0.9) {
+                if (status === "stand") {
+                    count++;
+                    document.getElementById("counting").innerHTML = count;
+
+                    // Save counting value to Firebase
+                    saveCountToFirebase(count);
+                }
+                status = "cul";
+            }
+
+            for (let i = 0; i < maxPredictions; i++) {
+                const classPrediction = prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+                labelContainer.childNodes[i].innerHTML = classPrediction;
+            }
+
+            drawPose(pose);
+        }
+
+        function drawPose(pose) {
+            if (webcam.canvas) {
+                ctx.drawImage(webcam.canvas, 0, 0);
+                if (pose) {
+                    const minPartConfidence = 0.5;
+                    tmPose.drawKeypoints(pose.keypoints, minPartConfidence, ctx);
+                    tmPose.drawSkeleton(pose.keypoints, minPartConfidence, ctx);
+                }
+            }
+        }
+
+        // init 함수 호출
+        init();
+    </script>
+</head>
+<body>
+    <div>Teachable Machine Pose Model</div>
+    <button type="button" onclick="init()">Start</button>
+    <div><canvas id="canvas"></canvas></div>
+    <div id="label-container"></div>
+    <div id="counting">0</div>
+</body>
+</html>
