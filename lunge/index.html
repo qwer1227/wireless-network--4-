@@ -145,9 +145,9 @@
           countContainer.innerHTML = `카운트 : ${count}`; // 카운트를 화면에 표시
 
           // 런지, 스탠드를 판단
-          if (lunge > 0.98 && lastAction == "stand") {
+          if (lunge > 0.85 && lastAction == "stand") {
             lastAction = "lunge";
-          } else if (stand > 0.98 && lastAction == "lunge") {
+          } else if (stand > 0.85 && lastAction == "lunge") {
             lastAction = "stand";
 
             count++; // 카운트 증가
