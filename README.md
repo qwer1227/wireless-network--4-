@@ -39,7 +39,7 @@
 
 JavaScript, db(firebase)
 
-## ✔UI 아이콘 설정(논의 필요)
+## ✔UI 아이콘 설정
 
 ## 메인 화면
 
@@ -67,7 +67,7 @@ JavaScript, db(firebase)
 ## 전체 UI 화면
 
   <div align="center">
-    <img width="500" src="./ui/전체흐름.png"/>
+    <img width="500" src="./ui/전체흐름.PNG"/>
   </div>
 
 ## 파이어베이스 SDK모듈 가져오기
