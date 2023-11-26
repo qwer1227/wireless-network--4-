@@ -67,7 +67,7 @@
                     <text id="current-count" x="45%" y="60%" text-anchor="end" font-size="1.5em" fill="blue" font-weight="bold"></text>
                     <text id="slash" x="52%" y="60%" text-anchor="middle" font-size="1.5em" fill="red" font-weight="bold">/</text>
                     <text id="goal-count" x="80%" y="60%" text-anchor="end" font-size="1.3em" fill="red" font-weight="bold"></text>
-                    <text id="alarm"  x="51%" y="55%" text-anchor="middle" dy="2em" font-size="1.5em" fill="red" font-weight="bold"></text>
+                    <text id="alarm"  x="51%" y="55%" text-anchor="middle" dy="2.5em" font-size="1em" fill="red" font-weight="bold"></text>
                 </svg>
                 </div>
             <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
@@ -81,7 +81,7 @@
                 let model, webcam, ctx, labelContainer, maxPredictions;
 
                 var goal = 8;
-                var selectTime = 10;
+                var selectTime = 15;
                 var OneTimer = 0;
                 function startTimer(countdown){
                     let timerID = setInterval(function(){
@@ -221,7 +221,8 @@
                     progress = parseInt(percent);
 
                     count === 0 ? setProgress(100) : setProgress(progress);
-
+                    count >= goal ? setProgress(100) : setProgress(progress);
+                    
                     progressText.textContent = `${progress}%`;
                     currentCountText.textContent = `${count} 개`;
                     goalCountText.textContent = `${goal} 개`;
