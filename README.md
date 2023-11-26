@@ -9,15 +9,15 @@
 ## 👥 조원
 
 - 조장
-  - 정성민 (qwer1227)
+  - 정성민 (qwer1227) - DB연동, 데이터베이스 값 저장 및 추출
     
 - 조원
   
-  - 박상원 (qarksangwon)
-  - 반진성 (banjinseong)
-  - 김상헌 (inhaexpress)
-  - 오주헌 (dhwngjs01)
-  - 신수민 (StarlightSSM)
+  - 박상원 (qarksangwon) - 푸시업 동작 및 기능 구현 (타이머)
+  - 반진성 (banjinseong) - 레이즈 동작 및 기능 구현
+  - 김상헌 (inhaexpress) - 스퀏 동작 및 기능 구현
+  - 오주헌 (dhwngjs01)  - 런지 동작 및 기능 구현 (프로그레스 바)
+  - 신수민 (StarlightSSM) - UI 및 메인페이지 
 
 ## 🔧주요 기능
 
