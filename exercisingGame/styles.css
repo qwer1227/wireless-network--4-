@@ -1,0 +1,140 @@
+.e11_11 {
+	overflow: hidden;
+}
+
+.e11_11 {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+
+.e1_4 {
+	width: 280px;
+	height: 280px;
+	position: absolute;
+	left: 399px;
+	top: 40px;
+	background-image: url(images/1.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	border: 3px dotted transparent;
+	/* Set initial border style */
+	transition: border 0.3s ease;
+	/* Add a smooth transition effect */
+	cursor: pointer;
+}
+.e1_4:hover {
+	border: 3px dotted #000; /* Change border style on hover */
+}
+
+.e1_9 {
+	width: 280px;
+	height: 280px;
+	position: absolute;
+	left: 860px;
+	top: 40px;
+	display: block;
+	margin: 0 auto;
+	background-image: url(images/2.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	border: 3px dotted transparent;
+	/* Set initial border style */
+	transition: border 0.3s ease;
+	/* Add a smooth transition effect */
+	cursor: pointer;
+}
+.e1_9:hover {
+	border: 3px dotted #000; /* Change border style on hover */
+}
+
+.e1_6 {
+	width: 210px;
+	height: 280px;
+	position: absolute;
+	left: 415px;
+	top: 340px;
+	background-image: url(images/3.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	border: 3px dotted transparent;
+	/* Set initial border style */
+	transition: border 0.3s ease;
+	/* Add a smooth transition effect */
+	cursor: pointer;
+}
+.e1_6:hover {
+	border: 3px dotted #000; /* Change border style on hover */
+}
+
+.e1_7 {
+	width: 260px;
+	height: 260px;
+	position: absolute;
+	left: 880px;
+	top: 340px;
+	background-image: url(images/4.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	border: 3px dotted transparent;
+	/* Set initial border style */
+	transition: border 0.3s ease;
+	/* Add a smooth transition effect */
+	cursor: pointer;
+}
+.e1_7:hover {
+	border: 3px dotted #000; /* Change border style on hover */
+}
+
+
+.e1_18 {
+	color: rgba(0, 0, 0, 1);
+	width: 91px;
+	height: 89px;
+	position: absolute;
+	left: 299px;
+	top: 52px;
+	font-family: Inter;
+	text-align: center;
+	font-size: 64px;
+	letter-spacing: 0;
+}
+
+.e1_19 {
+	color: rgba(0, 0, 0, 1);
+	width: 91px;
+	height: 89px;
+	position: absolute;
+	left: 780px;
+	top: 52px;
+	font-family: Inter;
+	text-align: center;
+	font-size: 64px;
+	letter-spacing: 0;
+}
+
+.e1_20 {
+	color: rgba(0, 0, 0, 1);
+	width: 91px;
+	height: 89px;
+	position: absolute;
+	left: 299px;
+	top: 330px;
+	font-family: Inter;
+	text-align: center;
+	font-size: 64px;
+	letter-spacing: 0;
+}
+
+.e1_21 {
+	color: rgba(0, 0, 0, 1);
+	width: 91px;
+	height: 89px;
+	position: absolute;
+	left: 780px;
+	top: 330px;
+	font-family: Inter;
+	text-align: center;
+	font-size: 64px;
+	letter-spacing: 0;
+}
