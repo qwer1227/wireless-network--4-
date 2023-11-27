@@ -89,3 +89,27 @@ JavaScript, db(firebase)
   ![image](https://github.com/qwer1227/wireless-network--4-/assets/113608501/cfd617d6-40d4-4d46-8af9-2e83623e8e8d)
 
   push 함수를 통해 realtime데이터베이스에 값이 정상적으로 들어갔음을 보여주는 이미지입니다.
+
+## 11-21 ~ 11-27
+
+### 메인 화면
+<div align="center">
+  <img src="https://github.com/qwer1227/wireless-network--4-/assets/38345593/331e8811-104a-40bb-b373-6fa2e7123cea"/>
+</div>
+
+### 목표 선택 화면
+<div align="center">
+  <img src="https://github.com/qwer1227/wireless-network--4-/assets/38345593/63b28809-e4c2-4f5c-8a89-cc6ea2451f11"/>
+</div>
+
+### 운동 화면
+<div align="center">
+  <img src="https://github.com/qwer1227/wireless-network--4-/assets/38345593/276ac336-ca75-4eb0-abc0-41189e9b55f6"/>
+</div>
+
+### 운동 화면 예시)
+<div align="center">
+  <img src="https://github.com/qwer1227/wireless-network--4-/assets/38345593/8009286f-28e0-467e-a677-2ce7ab8a77ec"/>
+</div>
+  
+
