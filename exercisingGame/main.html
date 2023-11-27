@@ -1,0 +1,40 @@
+<html lang="en">
+          <head>
+            <meta charset="utf-8">
+          
+            <title>메인페이지</title>
+            <meta name="description" content="Figma htmlGenerator">
+            <meta name="author" content="htmlGenerator">
+            <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
+
+            <link rel="stylesheet" href="styles.css">
+          
+          
+          </head>
+          
+          <body>
+            
+            <div class=e11_11>
+              <div  class="e1_4" onclick="redirectToPage(1)"></div>
+              <div  class="e1_6" onclick="redirectToPage(2)"></div>
+              <div  class="e1_7" onclick="redirectToPage(3)"></div>
+              <div  class="e1_9" onclick="redirectToPage(4)"></div>
+              
+              <form id="redirectForm" method="get" action="">
+                <input type="hidden" id="selectedPage" name="selectedPage" value="">
+              </form>
+
+            <span  class="e1_18">1.</span>
+            <span  class="e1_19">2.</span>
+            <span  class="e1_20">3.</span>
+            <span  class="e1_21">4.</span>
+          </div>
+
+          <script>
+            function redirectToPage(pageNumber) {
+                // Redirect to the new page with the selected page number
+                window.location.href = 'exercise.html?page=' + pageNumber;
+            }
+          </script>
+          </body>
+          </html>
