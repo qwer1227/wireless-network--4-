@@ -111,5 +111,9 @@ JavaScript, db(firebase)
 <div align="center">
   <img src="https://github.com/qwer1227/wireless-network--4-/assets/38345593/8009286f-28e0-467e-a677-2ce7ab8a77ec"/>
 </div>
-  
+
+### 운동 종료 후 데이터베이스 저장
+<div align="center">
+  <img src="https://github.com/qwer1227/wireless-network--4-/assets/38345593/9ab2e070-9b08-4d0c-9e45-0a00a4a80666"/>
+</div>
 
