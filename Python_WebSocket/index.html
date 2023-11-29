@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python Web Socket Test</title>
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <div id="wrap">
+      <h1>웹 소켓 테스트</h1>
+
+      <ol>
+        <li>사용자(크롬) 웹 캠 비디오 프레임을 웹소켓 서버(파이썬)로 전송한다. (image/jpeg, base64)</li>
+        <li>서버(파이썬)는 받은 비디오 프레임 한장 한장을 mediapipe(포즈 추적 라이브러리)로 포즈를 추적한다.</li>
+        <li>서버(파이썬)는 추적된 포즈를 다시 사용자(크롬)에게 전송한다. (image/jpeg, base64)</li>
+        <li>사용자(크롬)는 받은 포즈 추적 결과를 화면에 출력한다.</li>
+      </ol>
+
+      <hr />
+
+      <div class="camBox">
+        <p>내 웹캠에서 보이는 화면 (거울 모드)</p>
+        <video id="videoInput" style="display: none"></video>
+        <canvas id="videoOutput" style="transform: scaleX(-1)"></canvas>
+      </div>
+
+      <div class="camBox">
+        <p>파이썬(백엔드)에서 보내온 화면 (테스트용)</p>
+        <img id="receivedImage" style="min-height: 240px" src="images/wait_received_image.jpg" />
+      </div>
+
+      <div class="btnBox">
+        <button onclick="stream()">Send</button>
+      </div>
+
+      <hr />
+
+      <h3>현재 상태</h3>
+      <h3 id="currentStatus">지금 서버에 연결 중일 겁니다.</h3>
+
+      <hr />
+
+      <h3>웹 소켓 서버에 한번이라도 연결한 클라이언트 목록</h3>
+      <ul id="clientList"></ul>
+    </div>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
