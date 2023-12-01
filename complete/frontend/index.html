@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>메인페이지</title>
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col dotted-border-transition position-relative" onclick="chooseExercise('pushup')">
+          <span class="exercise-label">푸쉬업</span>
+          <img src="/images/pushup.png" class="exercise-image" />
+        </div>
+        <div class="col dotted-border-transition position-relative" onclick="chooseExercise('squat')">
+          <span class="exercise-label">스쿼트</span>
+          <img src="/images/squat.png" class="exercise-image" />
+        </div>
+        <div class="col dotted-border-transition position-relative" onclick="chooseExercise('raise')">
+          <span class="exercise-label">레이즈</span>
+          <img src="/images/raise.png" class="exercise-image" />
+        </div>
+        <div class="col dotted-border-transition position-relative" onclick="chooseExercise('lunge')">
+          <span class="exercise-label">런지</span>
+          <img src="/images/lunge.png" class="exercise-image" />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function chooseExercise(exercise) {
+        window.location.href = "/pages/inputCountAndTime.html?exercise=" + exercise;
+      }
+    </script>
+  </body>
+</html>

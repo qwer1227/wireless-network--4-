@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>목표입력</title>
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/inputCountAndTime.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <form id="goalForm" method="get" action="">
+          <div class="form-group">
+            <label for="goalCount">목표 횟수 입력:</label>
+            <input type="number" id="goalCount" name="goalCount" value="20" />
+            <label for="goalCount">회</label>
+          </div>
+          <div class="form-group">
+            <label for="goalMin">목표 시간 입력:</label>
+            <input type="number" id="goalMin" name="goalMin" value="2" min="0" max="2" step="1" />
+            <label for="goalMin">분</label>
+            <input type="number" id="goalSec" name="goalSec" value="0" min="0" step="30" max="30" />
+            <label for="goalSec">초</label>
+          </div>
+          <div class="form-group">
+            <button class="start" type="submit">시작</button>
+          </div>
+        </form>
+        <div class="rank">
+          <a href="#" title="순위 보기">
+            <img src="/images/rank.png" alt="순위 보기" />
+            <span>순위 보기</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <script>
+      const param = new URLSearchParams(window.location.search);
+
+      // page 파라미터를 가져온다.
+      // pushup = 푸쉬업
+      // squat = 스쿼트
+      // raise = 레이즈
+      // lunge = 런지
+      const exercise = param.get("exercise");
+
+      const goalForm = document.getElementById("goalForm");
+      const goalCount = document.getElementById("goalCount");
+      const goalMin = document.getElementById("goalMin");
+      const goalSec = document.getElementById("goalSec");
+
+      goalForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const goalCountValue = parseInt(goalCount.value);
+        const goalMinValue = parseInt(goalMin.value);
+        const goalSecValue = parseInt(goalSec.value);
+
+        if (goalCountValue === "" || goalMinValue === "" || goalSecValue === "") {
+          alert("모든 값을 입력해주세요.");
+          return;
+        }
+
+        const goalTime = goalMinValue * 60 + goalSecValue * 1;
+
+        if (goalTime <= 0) {
+          alert("목표 시간을 30초 이상으로 설정해주세요.");
+          return;
+        }
+
+        if (goalCountValue < 0 || goalMinValue < 0 || goalSecValue < 0) {
+          alert("모든 값을 양수로 입력해주세요.");
+          return;
+        }
+
+        // 페이지 이동
+        window.location.href = `/pages/exercise.html?exercise=${exercise}&goalCount=${goalCountValue}&goalTime=${goalTime}`;
+      });
+    </script>
+  </body>
+</html>

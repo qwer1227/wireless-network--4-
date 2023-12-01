@@ -1,0 +1,151 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  font-size: 14px;
+  letter-spacing: -0.2px;
+}
+
+button {
+  padding: 10px 20px;
+}
+
+#clock {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+#clock span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  font-size: 50px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+}
+
+.container {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.container > p {
+  margin: 20px 0;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  border-top: 1px solid #bfbfbf;
+  margin-top: 30px;
+  padding-top: 30px;
+}
+
+.col {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+#log-container {
+  margin-top: 20px;
+}
+
+#log-container > p {
+  margin: 0;
+  padding: 0;
+
+  line-height: 150%;
+}
+
+.progress-ring__circle {
+  width: 100%;
+  transition: 0.35s stroke-dashoffset;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+#modal {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.35s;
+}
+
+#modal-content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 500px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+#modal-header {
+  position: relative;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #bfbfbf;
+}
+
+#modal-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#modal-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+#modal-body {
+  padding: 20px 0;
+}
+
+#modal-text {
+  margin-bottom: 20px;
+}
+
+#modal-footer {
+  padding-top: 20px;
+  text-align: right;
+}
+
+#modal-btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #fff;
+  border: 1px solid #bfbfbf;
+  cursor: pointer;
+}
