@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .container {
+        max-width: 500px;
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+        }
+        .container > p {
+        margin: 20px 0;
+        }
+        .row {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        border-top: 1px solid #bfbfbf;
+        margin-top: 30px;
+        padding-top: 30px;
+        }
+
+        .col {
+        flex: 0 0 50%;
+        max-width: 50%;
+        }
+        #log-container {
+        margin-top: 20px;
+        }
+
+        #log-container > p {
+        margin: 0;
+        padding: 0;
+
+        line-height: 150%;
+        }
+
+        .progress-ring__circle {
+        width: 100%;
+        transition: 0.35s stroke-dashoffset;
+        transform: rotate(-90deg);
+        transform-origin: 50% 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <div>사레레 1분 개수</div>
+    <button type="button" onclick="init()">시작</button>
+    <div><canvas id="canvas"></canvas></div>
+    <div id="label-container"></div>
+    <div id="counting"></div>
+    <div id="percent"></div>
+    <div class="row">
+        <div class="col">
+        <canvas id="canvas"></canvas>
+        <div id="label-container"></div>
+        <div id="count-container"></div>
+        <div id="log-container"></div>
+    </div>
+        
+    <div class="col">
+        <svg class="progress-ring" width="200" height="200">
+            <circle class="progress-ring__circle" stroke="blue" stroke-width="8" stroke-linecap="round" fill="transparent" r="95" cx="100" cy="100" />
+            <text id="progress" x="50%" y="40%" text-anchor="middle" font-size="2em" font-weight="bold"></text>
+            <text id="current-count" x="45%" y="60%" text-anchor="end" font-size="1.5em" fill="blue" font-weight="bold"></text>
+            <text id="slash" x="52%" y="60%" text-anchor="middle" font-size="1.5em" fill="red" font-weight="bold">/</text>
+            <text id="goal-count" x="80%" y="60%" text-anchor="end" font-size="1.3em" fill="red" font-weight="bold"></text>
+            <text id="alarm"  x="51%" y="55%" text-anchor="middle" dy="2.5em" font-size="1em" fill="red" font-weight="bold"></text>
+        </svg>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+    <script type="text/javascript">
+        const URL = "https://teachablemachine.withgoogle.com/models/oHfmIMC5s/";
+        let model, webcam, ctx, labelContainer, maxPredictions;
+        let count = 0; //운동 횟수 카운트
+        let goal = 10; //목표 개수
+        let status = "stand"; //현재 몸 상태
+        let selectTime = 15; // 제한시간
+        let percent = 0; //완료율
+        let setup = false; // 측정 준비완료 여부
+        let breakLoop = true; //루프종료
+        let oneTimer = 0;
+        let timeText = document.querySelector("#alarm");
+        timeText.textContent = `남은 시간: ${selectTime}초`;
+
+
+        async function init() {
+            const modelURL = URL + "model.json";
+            const metadataURL = URL + "metadata.json";
+
+            model = await tmPose.load(modelURL, metadataURL);
+            maxPredictions = model.getTotalClasses();
+
+            const size = 400;
+            const flip = true;
+            webcam = new tmPose.Webcam(size, size, flip);
+            await webcam.setup();
+            await webcam.play();
+            window.requestAnimationFrame(loop);
+
+            const canvas = document.getElementById("canvas");
+            canvas.width = size;
+            canvas.height = size;
+            ctx = canvas.getContext("2d");
+            labelContainer = document.getElementById("label-container");
+            for (let i = 0; i < maxPredictions; i++) {
+                labelContainer.appendChild(document.createElement("div"));
+            }
+        }
+
+        async function loop(timestamp) {
+            webcam.update();
+            await predict();
+            if(breakLoop){ 
+                if(oneTimer===0&&setup===true){
+                    startTimer(selectTime);
+                }
+                window.requestAnimationFrame(loop);
+            }
+        }
+
+        async function predict() {
+            const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
+            const prediction = await model.predict(posenetOutput);
+
+
+            // 카운트 시작로직
+            if(!setup&&
+                prediction[0].probability.toFixed(2)===(1).toFixed(2)&&
+                prediction[1].probability.toFixed(2)===(0).toFixed(2))
+            {
+                setup = true;
+                console.log("시작")
+                startTimer(selectTime);
+            } 
+            //팔이 올라갈때 카운트 +1
+            if(setup === true){
+                if (prediction[0].probability.toFixed(2) >= 0.95) {
+                    status = "stand";
+                } else if (prediction[1].probability.toFixed(2) >= 0.95) {
+                    if (status === "stand") {
+                        count++;
+                        document.getElementById("counting").innerHTML = count;
+                        //목표치 계산
+                        percent = Math.floor((count / goal) * 100);
+                        document.getElementById("percent").innerHTML = `percent: ${percent.toFixed(0)}%`;                  
+                        updateProgress(percent)
+                    }
+                    status = "raise";
+                }
+            }
+            
+
+            for (let i = 0; i < maxPredictions; i++) {
+                const classPrediction =
+                    prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+                labelContainer.childNodes[i].innerHTML = classPrediction;
+            }
+
+            drawPose(pose);
+        }
+
+        function drawPose(pose) {
+            if (webcam.canvas) {
+                ctx.drawImage(webcam.canvas, 0, 0);
+                if (pose) {
+                    const minPartConfidence = 0.5;
+                    tmPose.drawKeypoints(pose.keypoints, minPartConfidence, ctx);
+                    tmPose.drawSkeleton(pose.keypoints, minPartConfidence, ctx);
+                }
+            }
+        }
+
+        function startTimer(countdown) {
+            let timerID = setInterval(function(){
+                countdown--;
+                timeText.textContent= `남은 시간 :${countdown}초`;
+                if(countdown <= 0){
+                    clearInterval(timerID);
+                    breakLoop = false;
+                }
+            }, 1000);
+            oneTimer++;
+        }
+
+        const circle = document.querySelector(".progress-ring__circle");
+        const progressText = document.querySelector("#progress");
+        const currentCountText = document.querySelector("#current-count");
+        const goalCountText = document.querySelector("#goal-count");
+
+        var radius = circle.r.baseVal.value;
+        var circumference = radius * 2 * Math.PI;
+
+        circle.style.strokeDasharray = `${circumference} ${circumference}`; // dasharray를 원의 둘레로 설정
+        circle.style.strokeDashoffset = circumference; // 원의 둘레만큼 dash를 이동시켜서 안보이게 함
+
+        function setProgress(percent) {
+            const offset = circumference - (percent / 100) * circumference;
+            circle.style.strokeDashoffset = offset;
+        }
+
+        function updateProgress(percent) {
+            progress = parseInt(percent);
+
+            count === 0 ? setProgress(100) : setProgress(progress);
+            count >= goal ? setProgress(100) : setProgress(progress);
+            
+            progressText.textContent = `${progress}%`;
+            currentCountText.textContent = `${count} 개`;
+            goalCountText.textContent = `${goal} 개`;
+        }
+        updateProgress(percent);
+    </script>
+</body>
+</html>
