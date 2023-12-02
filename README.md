@@ -13,10 +13,10 @@
     
 - 조원
   
-  - 박상원 (qarksangwon) - 푸시업 동작 및 기능 구현 (타이머)
+  - 박상원 (qarksangwon) - DB저장 및 추출, 기능 구현
   - 반진성 (banjinseong) - 레이즈 동작 및 기능 구현
   - 김상헌 (inhaexpress) - 스퀏 동작 및 기능 구현
-  - 오주헌 (dhwngjs01)  - 런지 동작 및 기능 구현 (프로그레스 바)
+  - 오주헌 (dhwngjs01)  - 서버 구축, 기능 구현
   - 신수민 (StarlightSSM) - UI 및 메인페이지 
 
 ## 🔧주요 기능
