@@ -1,0 +1,98 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #000;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+
+  max-width: 800px;
+  width: 100%;
+}
+
+#goalForm {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 1);
+  padding: 50px;
+}
+
+.form-group {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.form-group label {
+  display: inline-block;
+  font-size: 36px;
+}
+
+.form-group label:first-child {
+  margin-right: 15%;
+}
+
+.form-group label:not(:first-child) {
+  padding: 0 1%;
+}
+
+.form-group input {
+  display: inline-block;
+  width: 15%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 36px;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #000;
+}
+
+.form-group button {
+  cursor: pointer;
+  font-size: 36px;
+  padding: 10px 50px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.form-group button:hover {
+  background-color: #ccc;
+}
+
+.form-group:last-child {
+  text-align: right;
+  margin: 0;
+}
+
+.rank {
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.rank a {
+  display: inline-block;
+  border: 2px solid transparent;
+}
+
+.rank a:hover {
+  border: 2px solid #fff;
+}
+
+.rank img {
+  height: 100px;
+  vertical-align: middle;
+}
+
+.rank span {
+  font-size: 36px;
+  font-weight: bold;
+  padding: 0 10px;
+  color: #fff;
+  vertical-align: middle;
+}

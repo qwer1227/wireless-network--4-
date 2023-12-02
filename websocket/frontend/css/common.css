@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 14px;
+  letter-spacing: -0.2px;
+}
+
+a {
+  text-decoration: none;
+}
