@@ -13,7 +13,7 @@
     
 - 조원
   
-  - 박상원 (qarksangwon) - DB저장 및 추출, 기능 구현
+  - 박상원 (qarksangwon) - DB,동작 관련 기능 구현
   - 반진성 (banjinseong) - 레이즈 동작 및 기능 구현
   - 김상헌 (inhaexpress) - 스퀏 동작 및 기능 구현
   - 오주헌 (dhwngjs01)  - 서버 구축, 기능 구현
