@@ -36,6 +36,7 @@ const param = new URLSearchParams(window.location.search); // URL 파라미터
 const exercise = param.get("exercise") ? param.get("exercise") : ""; // 운동 종류
 const goalCount = param.get("goalCount") ? Number(param.get("goalCount")) : 20; // 목표 횟수
 const goalTime = param.get("goalTime") ? Number(param.get("goalTime")) : 120; // 제한 시간
+const username = param.get("username") ? param.get("username") : "TEST";
 
 window.onload = function () {
   init();
@@ -176,11 +177,12 @@ function stream() {
   streamInterval = setInterval(sendImage, 30);
 
   function sendImage() {
-    // 목표 횟수를 달성하거나 제한 시간이 지나면 루프 종료
-    if (score >= goalCount || remainTime <= 0) {
+    // 제한 시간이 지나면 루프 종료
+    if (remainTime <= 0) {
       clearInterval(streamInterval);
       clearInterval(timer);
-      saveScoreToFirebase(exercise, score, goalTime); // 데이터베이스에 저장
+      saveCountToFirebase(username,score,goalTime);
+      window.location.href = `./resultPage.html?exercise=${exercise}&goalTime=${goalSec.value}`;
       return;
     }
 

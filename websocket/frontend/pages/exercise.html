@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>운동 페이지</title>
-    <link rel="stylesheet" href="/css/common.css" />
-    <link rel="stylesheet" href="/css/exercise.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/exercise.css" />
   </head>
   <body>
     <div id="clock">
@@ -41,7 +41,7 @@
         </div>
 
         <div class="col-6">
-          <img id="received-image" style="min-height: 300px" src="/images/wait_received_image.jpg" />
+          <img id="received-image" style="min-height: 300px" src="../images/wait_received_image.jpg" />
         </div>
 
         <div class="col-6">
@@ -63,14 +63,38 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8.3/dist/teachablemachine-pose.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+      import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
 
-    <!-- Firebase App -->
-    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app-compat.js"></script>
-    <!-- Firebase Realtime Database -->
-    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-database-compat.js"></script>
+      const firebaseConfig = {
+          apiKey: "AIzaSyBGhiclax0v6Onvo1iozBuwUOYrShbbqkI",
+          authDomain: "wireless-project-4.firebaseapp.com",
+          databaseURL: "https://wireless-project-4-default-rtdb.firebaseio.com",
+          projectId: "wireless-project-4",
+          storageBucket: "wireless-project-4.appspot.com",
+          messagingSenderId: "232862239959",
+          appId: "1:232862239959:web:b47a6fa0e315378e263492",
+          measurementId: "G-1DFMELVGLH"
+      };
 
-    <!-- Firebase 스크립트 추가 -->
-    <script src="/js/firebase.js"></script>
-    <script src="/js/main.js"></script>
+      // Firebase 초기화
+      const app = initializeApp(firebaseConfig);
+      const database = getDatabase(app);
+
+      // Realtime Database에 데이터 저장 함수
+      function saveCountToFirebase(username, score, goalTime) {
+          
+          const countRef = ref(database, 'pushup');
+
+          // push() 함수를 사용하여 고유한 키로 데이터 저장
+          push(countRef, {
+              username : username,
+              count: score,
+              timestamp: goalTime
+          });
+      };
+    </script>
   </body>
 </html>

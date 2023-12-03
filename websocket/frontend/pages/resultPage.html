@@ -123,7 +123,7 @@
       // 상위 10개의 데이터를 화면에 표시
       top10Results.forEach((result) => {
         const resultItem = document.createElement("li");
-        resultItem.textContent = `${index}등  (${result.username}) ${result.count}개   `;
+        resultItem.textContent = `${index}등  ('${result.username}'님) : ${result.count}개   `;
         resultsContainer.appendChild(resultItem);
         index += 1;
       });
