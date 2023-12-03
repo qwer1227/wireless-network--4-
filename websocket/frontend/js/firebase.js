@@ -1,23 +1,28 @@
 // Firebase 구성 객체
 const firebaseConfig = {
-  apiKey: "AIzaSyAVk9744dXWQRJcNC1IH1n1qGEt_T7Whf0",
-  authDomain: "wirelessnetworkproject-ba412.firebaseapp.com",
-  databaseURL: "https://wirelessnetworkproject-ba412-default-rtdb.firebaseio.com",
-  projectId: "wirelessnetworkproject-ba412",
-  storageBucket: "wirelessnetworkproject-ba412.appspot.com",
-  messagingSenderId: "869083151927",
-  appId: "1:869083151927:web:92be92780dab8c395689b2",
-  measurementId: "G-TKN1MLNDGY",
+  apiKey: "AIzaSyBGhiclax0v6Onvo1iozBuwUOYrShbbqkI",
+  authDomain: "wireless-project-4.firebaseapp.com",
+  databaseURL: "https://wireless-project-4-default-rtdb.firebaseio.com",
+  projectId: "wireless-project-4",
+  storageBucket: "wireless-project-4.appspot.com",
+  messagingSenderId: "232862239959",
+  appId: "1:232862239959:web:b47a6fa0e315378e263492",
+  measurementId: "G-1DFMELVGLH"
 };
 
 // Firebase 초기화
-firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
 
-// 데이터 추가 예제
-function saveScoreToFirebase(type, score, timestamp) {
-  const scoreRef = database.ref(type);
+// Realtime Database에 데이터 저장 함수
+function saveCountToFirebase(username, score, goalTime) {
+  
+  const countRef = ref(database, 'pushup');
 
   // push() 함수를 사용하여 고유한 키로 데이터 저장
-  scoreRef.push({ score: score, timestamp: timestamp });
-}
+  push(countRef, {
+      username : username,
+      count: score,
+      timestamp: goalTime
+  });
+};
