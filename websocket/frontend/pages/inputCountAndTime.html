@@ -87,19 +87,36 @@
         window.location.href = `./exercise.html?exercise=${exercise}&goalCount=${goalCountValue}&goalTime=${goalTime}&&username=${usernameInput.value}`;
       });
 
+      var exe = exercise
       rankLink.addEventListener("click", function (event) {
-      event.preventDefault(); // 기본 동작(링크 이동) 방지
+        event.preventDefault(); // Prevent the default behavior (link navigation)
 
-      // URL 파라미터 가져오기
-      const param = new URLSearchParams(window.location.search);
-      const exercise = param.get("exercise");
-      const goalTime = param.get("goalTime");
+        let inputValue;
 
-      // 이후 필요한 작업 수행
-      // 예: 새로운 페이지로 이동하거나, 값에 대한 처리 등
-      const resultPageURL = `./resultPage.html?exercise=${exercise}&goalTime=${goalSec.value}`;
-      window.location.href = resultPageURL;
-     });
+        // Keep prompting until a valid numeric value is entered
+        do {
+          inputValue = window.prompt(`${exe}의 순위입니다. 보고싶은 시간대를 입력해주세요.(범위:0초~30초)`);
+
+          // Check if the user clicked Cancel
+          if (inputValue === null) {
+            return; // Exit the function if Cancel is clicked
+          }
+
+          // Check if the entered value is a valid number within the specified range
+          inputValue = parseFloat(inputValue);
+        } while (isNaN(inputValue) || inputValue < 0 || inputValue > 300);
+
+        // URL parameter extraction
+        const param = new URLSearchParams(window.location.search);
+        const exercise = param.get("exercise");
+
+        // Update the resultPageURL with the validated user input
+        const resultPageURL = `./resultPage.html?exercise=${exercise}&goalTime=${inputValue}`;
+
+        // Redirect to the new URL
+        window.location.href = resultPageURL;
+      });
+
 
       usernameInput.addEventListener("input", function () {
         usernameInput.value = usernameInput.value.replace(/[^a-zA-Z]/g, "").slice(0, 3);
