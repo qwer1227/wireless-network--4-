@@ -181,8 +181,15 @@ function stream() {
     if (remainTime <= 0) {
       clearInterval(streamInterval);
       clearInterval(timer);
-      saveCountToFirebase(username,score,goalTime);
-      window.location.href = `./resultPage.html?exercise=${exercise}&goalTime=${goalSec.value}`;
+      saveCountToFirebase(username, score, goalTime, exercise)
+        .then(() => {
+          // 데이터가 성공적으로 저장된 후에 리다이렉트합니다.
+          window.location.href = `/pages/resultPage.html?exercise=${exercise}&goalTime=${goalTime}`;
+        })
+        .catch((error) => {
+          console.error("Firebase에 데이터를 저장하는 중 오류 발생:", error);
+        });
+        
       return;
     }
 
@@ -190,6 +197,7 @@ function stream() {
     sendDataToServer({ imgData: imgData }); // 서버로 이미지 데이터 전송
   }
 }
+
 
 // 캔버스에 웹 캠 영상 출력
 function processImage() {

@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <title>목표 입력 페이지</title>
     <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../css/common.css" />
-    <link rel="stylesheet" href="../css/inputCountAndTime.css" />
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/inputCountAndTime.css" />
   </head>
 
   <body>
@@ -33,7 +33,7 @@
         </form>
         <div class="rank">
           <a id="rankLink" href="#" title="순위 보기">
-            <img src="../images/rank.png" alt="순위 보기" />
+            <img src="/images/rank.png" alt="순위 보기" />
             <span>순위 보기</span>
           </a>
         </div>
@@ -84,9 +84,9 @@
         }
 
         // 페이지 이동
-        window.location.href = `./exercise.html?exercise=${exercise}&goalCount=${goalCountValue}&goalTime=${goalTime}&&username=${usernameInput.value}`;
+        window.location.href = `/pages/exercise.html?exercise=${exercise}&goalCount=${goalCountValue}&goalTime=${goalTime}&username=${usernameInput.value}`;
       });
-
+      
       var exe = exercise
       rankLink.addEventListener("click", function (event) {
         event.preventDefault(); // Prevent the default behavior (link navigation)
@@ -116,7 +116,6 @@
         // Redirect to the new URL
         window.location.href = resultPageURL;
       });
-
 
       usernameInput.addEventListener("input", function () {
         usernameInput.value = usernameInput.value.replace(/[^a-zA-Z]/g, "").slice(0, 3);

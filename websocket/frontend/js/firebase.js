@@ -11,18 +11,25 @@ const firebaseConfig = {
 };
 
 // Firebase 초기화
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
 
-// Realtime Database에 데이터 저장 함수
-function saveCountToFirebase(username, score, goalTime) {
-  
-  const countRef = ref(database, 'pushup');
+// 데이터 추가 예제
+function saveCountToFirebase(username, score, goalTime, exercise) {
+  return new Promise((resolve, reject) => {
+    const countRef = database.ref(exercise);
 
-  // push() 함수를 사용하여 고유한 키로 데이터 저장
-  push(countRef, {
-      username : username,
+    // push() 함수를 사용하여 고유한 키로 데이터 저장
+    countRef.push({
+      username: username,
       count: score,
       timestamp: goalTime
+    }, (error) => {
+      if (error) {
+        reject(error); // 저장 중에 오류가 발생하면 프로미스를 reject합니다.
+      } else {
+        resolve(); // 저장이 성공하면 프로미스를 resolve합니다.
+      }
+    });
   });
-};
+}
