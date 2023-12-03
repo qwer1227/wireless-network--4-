@@ -1,0 +1,51 @@
+body {
+  background-color: #f0f0f0;
+}
+
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.result {
+  text-align: center;
+}
+
+#exercise-score-title {
+  margin-bottom: 20px;
+}
+
+#resultList {
+  list-style-type: none;
+  padding: 0;
+}
+
+#resultList li {
+  margin-bottom: 10px;
+  background-color: #e0e0e0;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.main-btn {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.main-btn button {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.main-btn button:hover {
+  background-color: #3e8e41;
+}

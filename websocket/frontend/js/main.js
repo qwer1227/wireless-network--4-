@@ -189,7 +189,7 @@ function stream() {
         .catch((error) => {
           console.error("Firebase에 데이터를 저장하는 중 오류 발생:", error);
         });
-        
+
       return;
     }
 
@@ -197,7 +197,6 @@ function stream() {
     sendDataToServer({ imgData: imgData }); // 서버로 이미지 데이터 전송
   }
 }
-
 
 // 캔버스에 웹 캠 영상 출력
 function processImage() {
@@ -260,15 +259,3 @@ function updateProgress() {
   currentCountText.textContent = `${score} 개`;
   goalCountText.textContent = `${goalCount} 개`;
 }
-
-// // 모달
-// const modal = document.getElementById("modal");
-// function showModal() {
-//   modal.style.visibility = "visible";
-//   modal.style.opacity = 1;
-// }
-
-// function hideModal() {
-//   modal.style.visibility = "hidden";
-//   modal.style.opacity = 0;
-// }

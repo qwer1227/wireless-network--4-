@@ -2,13 +2,35 @@
 <html lang="ko">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>목표 입력 페이지</title>
-    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/modal.css" />
     <link rel="stylesheet" href="/css/inputCountAndTime.css" />
   </head>
 
   <body>
+    <div id="modal">
+      <div id="modal-content">
+        <div id="modal-header">
+          <span id="modal-title">시간 선택</span>
+          <span id="modal-close" onclick="hideModal()">&times;</span>
+        </div>
+        <div id="modal-body">
+          <p id="modal-text">
+            <!-- 로딩중 프로그레스바 -->
+            <div id="loader">
+              <div></div>
+            </div>
+            <!-- 로딩중 프로그레스바 -->
+          </p>
+        </div>
+        <div id="modal-footer">
+          <button id="modal-btn" onclick="hideModal()">닫기</button>
+        </div>
+      </div>
+    </div>
+
     <div class="container">
       <div class="row">
         <form id="goalForm" method="get" action="">
@@ -19,26 +41,30 @@
           </div>
           <div class="form-group">
             <label for="goalMin">목표 시간 입력:</label>
-            <input type="number" id="goalSec" name="goalSec" value="0" min="0" max="300" />
+            <input type="number" id="goalSec" name="goalSec" value="30" min="30" max="300" />
             <label for="goalSec">초</label>
             <label id="timeValue"></label>
           </div>
           <div class="form-group">
-            <label for="goalMin">유저 이름 입력:</label>
+            <label for="username">유저 이름 입력:</label>
             <input type="text" id="username" name="username" value="" />
+            <label for="username">님</label>
           </div>
           <div class="form-group">
             <button class="start" type="submit">시작</button>
           </div>
         </form>
         <div class="rank">
-          <a id="rankLink" href="#" title="순위 보기">
+          <button id="rankLink" title="순위 보기">
             <img src="/images/rank.png" alt="순위 보기" />
             <span>순위 보기</span>
-          </a>
+          </button>
         </div>
       </div>
     </div>
+    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-database-compat.js"></script>
+    <script src="/js/firebase.js"></script>
     <script>
       const param = new URLSearchParams(window.location.search);
 
@@ -49,12 +75,13 @@
       const timeValue = document.getElementById("timeValue");
       const usernameInput = document.getElementById("username");
 
-      var calMin = 0
-      var calSec = 0
+      var calMin = 0;
+      var calSec = 0;
+
       goalSec.addEventListener("input", function () {
         // input 요소의 값이 변경될 때마다 timeValue에 innerHTML로 표시
-        calMin = Math.floor(goalSec.value/60);
-        calSec = goalSec.value-(calMin*60);
+        calMin = Math.floor(goalSec.value / 60);
+        calSec = goalSec.value - calMin * 60;
 
         timeValue.innerHTML = `(${calMin}분 ${calSec}초)`;
       });
@@ -66,7 +93,7 @@
         const goalSecValue = parseInt(goalSec.value);
         const usernameValue = usernameInput.value;
 
-        if (isNaN(goalCountValue) || isNaN(goalSecValue)) {
+        if (isNaN(goalCountValue) || isNaN(goalSecValue) || usernameValue.length === 0) {
           alert("모든 값을 입력해주세요.");
           return;
         }
@@ -86,40 +113,78 @@
         // 페이지 이동
         window.location.href = `/pages/exercise.html?exercise=${exercise}&goalCount=${goalCountValue}&goalTime=${goalTime}&username=${usernameInput.value}`;
       });
-      
-      var exe = exercise
+
+      // rankLink.addEventListener("click", function (event) {
+      //   event.preventDefault(); // Prevent the default behavior (link navigation)
+
+      //   let inputValue;
+
+      //   // Keep prompting until a valid numeric value is entered
+      //   do {
+      //     inputValue = window.prompt(`${exercise}의 순위입니다. 보고싶은 시간대를 입력해주세요.(범위:0초~30초)`);
+
+      //     // Check if the user clicked Cancel
+      //     if (inputValue === null) {
+      //       return; // Exit the function if Cancel is clicked
+      //     }
+
+      //     // Check if the entered value is a valid number within the specified range
+      //     inputValue = parseInt(inputValue);
+      //   } while (isNaN(inputValue) || inputValue < 0 || inputValue > 300);
+
+      //   // Update the resultPageURL with the validated user input
+      //   const resultPageURL = `/pages/resultPage.html?exercise=${exercise}&goalTime=${inputValue}`;
+
+      //   // Redirect to the new URL
+      //   window.location.href = resultPageURL;
+      // });
+
+      const modalText = document.getElementById("modal-text");
+      const loader = document.getElementById("loader");
+      const modal = document.getElementById("modal");
+
+      window.onload = async function () {
+        try {
+          loader.style.display = "block";
+
+          // 모든 시간 데이터 로딩
+          const timestampList = await getAllTimestampFromFirebase(exercise);
+
+          timestampList.forEach((goalTime) => {
+            const div = document.createElement("div");
+            div.className = "goal-time-link-box";
+            div.innerHTML = `<a class="goal-time-link" href="/pages/resultPage.html?exercise=${exercise}&goalTime=${goalTime}">${goalTime}초</a>`;
+
+            modalText.appendChild(div);
+          });
+
+          timestampList.length === 0 && (modalText.innerHTML = "아무도 운동을 하지 않았습니다.");
+
+          // 로딩이 완료되면 로딩중 프로그레스바를 숨깁니다.
+          loader.style.display = "none";
+        } catch (error) {
+          console.error("Error loading data:", error);
+        }
+      };
+
       rankLink.addEventListener("click", function (event) {
-        event.preventDefault(); // Prevent the default behavior (link navigation)
-
-        let inputValue;
-
-        // Keep prompting until a valid numeric value is entered
-        do {
-          inputValue = window.prompt(`${exe}의 순위입니다. 보고싶은 시간대를 입력해주세요.(범위:0초~30초)`);
-
-          // Check if the user clicked Cancel
-          if (inputValue === null) {
-            return; // Exit the function if Cancel is clicked
-          }
-
-          // Check if the entered value is a valid number within the specified range
-          inputValue = parseFloat(inputValue);
-        } while (isNaN(inputValue) || inputValue < 0 || inputValue > 300);
-
-        // URL parameter extraction
-        const param = new URLSearchParams(window.location.search);
-        const exercise = param.get("exercise");
-
-        // Update the resultPageURL with the validated user input
-        const resultPageURL = `./resultPage.html?exercise=${exercise}&goalTime=${inputValue}`;
-
-        // Redirect to the new URL
-        window.location.href = resultPageURL;
+        showModal();
       });
 
       usernameInput.addEventListener("input", function () {
         usernameInput.value = usernameInput.value.replace(/[^a-zA-Z]/g, "").slice(0, 3);
       });
+
+      // 모달 관련 함수
+      function showModal() {
+        modal.style.visibility = "visible";
+        modal.style.opacity = 1;
+      }
+
+      function hideModal() {
+        modal.style.visibility = "hidden";
+        modal.style.opacity = 0;
+      }
     </script>
   </body>
 </html>

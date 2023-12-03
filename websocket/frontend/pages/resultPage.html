@@ -1,148 +1,158 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>운동 결과</title>
-    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/css/common.css" />
     <link rel="stylesheet" href="/css/result.css" />
-    <style>
-      body {
-        font-family: 'Inter', sans-serif;
-        background-color: #f0f0f0;
-        margin: 0;
-        padding: 0;
-      }
-
-      .container {
-        max-width: 600px;
-        margin: 50px auto;
-        background-color: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        border-radius: 8px;
-      }
-
-      .result {
-        text-align: center;
-      }
-
-      #resultList {
-        list-style-type: none;
-        padding: 0;
-      }
-
-      #resultList li {
-        margin-bottom: 10px;
-        background-color: #e0e0e0;
-        padding: 10px;
-        border-radius: 4px;
-      }
-
-      .main-btn {
-        text-align: center;
-        margin-top: 20px;
-      }
-
-      .main-btn button {
-        background-color: #4caf50;
-        color: #fff;
-        padding: 10px 20px;
-        font-size: 16px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-    </style>
   </head>
 
   <body>
     <div class="container">
       <div class="result">
-        <h2 id="main"></h2>
+        <h2 id="exercise-score-title"></h2>
+        <!-- 로딩중 프로그레스바 -->
+        <div id="loader">
+          <div></div>
+        </div>
+        <!-- 로딩중 프로그레스바 -->
         <ul id="resultList"></ul>
       </div>
       <div class="main-btn">
-        <button onclick="goToMain()">메인 화면으로</button>
+        <button onclick="link(`/pages/inputCountAndTime.html?exercise=${exercise}`)">뒤로가기</button>
+        <button onclick="link('/')">메인으로</button>
       </div>
     </div>
 
     <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
-      import { getDatabase, ref, get, query, orderByChild, equalTo } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
+      // import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+      // import { getDatabase, ref, get, query, orderByChild, equalTo } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
 
-      const firebaseConfig = {
-        apiKey: "AIzaSyBGhiclax0v6Onvo1iozBuwUOYrShbbqkI",
-        authDomain: "wireless-project-4.firebaseapp.com",
-        databaseURL: "https://wireless-project-4-default-rtdb.firebaseio.com",
-        projectId: "wireless-project-4",
-        storageBucket: "wireless-project-4.appspot.com",
-        messagingSenderId: "232862239959",
-        appId: "1:232862239959:web:b47a6fa0e315378e263492",
-        measurementId: "G-1DFMELVGLH"
-      };
+      // const firebaseConfig = {
+      //   apiKey: "AIzaSyBGhiclax0v6Onvo1iozBuwUOYrShbbqkI",
+      //   authDomain: "wireless-project-4.firebaseapp.com",
+      //   databaseURL: "https://wireless-project-4-default-rtdb.firebaseio.com",
+      //   projectId: "wireless-project-4",
+      //   storageBucket: "wireless-project-4.appspot.com",
+      //   messagingSenderId: "232862239959",
+      //   appId: "1:232862239959:web:b47a6fa0e315378e263492",
+      //   measurementId: "G-1DFMELVGLH",
+      // };
 
-      const app = initializeApp(firebaseConfig);
-      const database = getDatabase(app);
-      // 파라미터로 받은 값 const로 선언 해야함
+      // const app = initializeApp(firebaseConfig);
+      // const database = getDatabase(app);
+      // // 파라미터로 받은 값 const로 선언 해야함
+      // const param = new URLSearchParams(window.location.search); // URL 파라미터
+      // const exercise = param.get("exercise") ? param.get("exercise") : "pushup"; // 운동 종류
+      // const timestamp = param.get("goalTime") ? Number(param.get("goalTime")) : 20; // 제한 시간
+
+      // // 결과를 가져와서 화면에 표시하는 함수
+      // window.onload = function () {
+      //   // 해당 운동과 타임스탬프에 대한 데이터 가져오기
+      //   const exerciseRef = ref(database, exercise);
+      //   const resultsContainer = document.getElementById("resultList");
+
+      //   // query 함수를 사용하여 orderByChild와 equalTo 대신에 필터링
+      //   const q = query(exerciseRef, orderByChild("timestamp"), equalTo(timestamp));
+
+      //   const resultList = []; // 결과 count를 저장할 리스트
+
+      //   get(q)
+      //     .then((snapshot) => {
+      //       snapshot.forEach((childSnapshot) => {
+      //         const resultData = childSnapshot.val();
+
+      //         // resultData의 count와 name을 객체로 저장
+      //         resultList.push({ count: resultData.count, username: resultData.username });
+      //       });
+
+      //       // 내림차순으로 정렬
+      //       resultList.sort((a, b) => b.count - a.count);
+
+      //       // 상위 10개의 데이터만 가져오기
+      //       const top10Results = resultList.slice(0, 10);
+
+      //       resultsContainer.innerHTML = ""; // 기존 결과 지우기
+
+      //       // 상위 10개의 데이터를 화면에 표시
+      //       top10Results.forEach((result, index) => {
+      //         index++;
+
+      //         const resultItem = document.createElement("li");
+      //         resultItem.textContent = `${index}등  ('${result.username}'님) : ${result.count}개   `;
+      //         resultsContainer.appendChild(resultItem);
+      //       });
+      //       const mainHeading = document.getElementById("main");
+      //       mainHeading.innerHTML = `${exercise}의 ${timestamp}초 순위`;
+      //     })
+      //     .catch((error) => {
+      //       console.error("데이터를 가져오는 중 에러 발생:", error);
+      //     });
+      // };
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-database-compat.js"></script>
+    <script src="/js/firebase.js"></script>
+    <script>
       const param = new URLSearchParams(window.location.search); // URL 파라미터
       const exercise = param.get("exercise") ? param.get("exercise") : "pushup"; // 운동 종류
       const timestamp = param.get("goalTime") ? Number(param.get("goalTime")) : 20; // 제한 시간
 
-      // 결과를 가져와서 화면에 표시하는 함수
-      window.onload = function() {
-        // 운동 종류에 따른 경로 설정
-        const exercisePath = exercise; // 수정해야함
+      const loader = document.getElementById("loader");
+      const exerciseScoreTitle = document.getElementById("exercise-score-title");
+      const resultsContainer = document.getElementById("resultList");
 
-        // 해당 운동과 타임스탬프에 대한 데이터 가져오기
-        const exerciseRef = ref(database, exercisePath);
-        const resultsContainer = document.getElementById("resultList");
+      window.onload = async function () {
+        init();
 
-        // query 함수를 사용하여 orderByChild와 equalTo 대신에 필터링
-        const q = query(exerciseRef, orderByChild("timestamp"), equalTo(timestamp));
+        try {
+          loader.style.display = "block";
 
-        const resultList = []; // 결과 count를 저장할 리스트
+          const topTenList = await getCountFromFirebase(exercise, timestamp);
 
-        get(q)
-    .then((snapshot) => {
-      snapshot.forEach((childSnapshot) => {
-        const resultData = childSnapshot.val();
+          resultsContainer.innerHTML = ""; // 기존 결과 지우기
 
-        // resultData의 count와 name을 객체로 저장
-        resultList.push({ count: resultData.count, username: resultData.username });
-      });
+          // 상위 10개의 데이터를 화면에 표시
+          topTenList.forEach((result, index) => {
+            index++;
 
-      // 내림차순으로 정렬
-      resultList.sort((a, b) => b.count - a.count);
+            const resultItem = document.createElement("li");
+            resultItem.textContent = `${index}등  ('${result.username}'님) : ${result.count}개`;
+            resultsContainer.appendChild(resultItem);
+          });
 
-      // 상위 10개의 데이터만 가져오기
-      const top10Results = resultList.slice(0, 10);
-
-      resultsContainer.innerHTML = ""; // 기존 결과 지우기
-
-      var index = 1;
-      // 상위 10개의 데이터를 화면에 표시
-      top10Results.forEach((result) => {
-        const resultItem = document.createElement("li");
-        resultItem.textContent = `${index}등  ('${result.username}'님) : ${result.count}개   `;
-        resultsContainer.appendChild(resultItem);
-        index += 1;
-      });
-          const mainHeading = document.getElementById("main");
-          mainHeading.innerHTML = `${exercise}의 ${timestamp}초 순위`;
-        }).catch(error => {
-          console.error("데이터를 가져오는 중 에러 발생:", error);
-        });
+          loader.style.display = "none";
+        } catch (error) {
+          console.error("Error loading data:", error);
         }
-    </script>
-    <script>
-      // 메인 화면으로 이동하는 함수
-      function goToMain() {
-        // 메인 페이지로 이동하는 URL 생성
-        const mainPageURL = "/index.html";
+      };
 
-        // 페이지 이동
-        window.location.href = mainPageURL;
+      function init() {
+        let exerciseName = "";
+
+        // 운동 종류에 따라서 운동 이름 설정
+        switch (exercise) {
+          case "pushup":
+            exerciseName = "팔굽혀펴기";
+            break;
+          case "squat":
+            exerciseName = "스쿼트";
+            break;
+          case "raise":
+            exerciseName = "사이드 레터럴 레이즈";
+            break;
+          case "lunge":
+            exerciseName = "런지";
+            break;
+        }
+
+        exerciseScoreTitle.innerHTML = `${exerciseName}의 ${timestamp}초 순위`;
+      }
+
+      // 페이지 이동하는 함수
+      function link(url) {
+        window.location.href = url;
       }
     </script>
   </body>
