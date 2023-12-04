@@ -89,3 +89,6 @@ JavaScript, db(firebase)
   ![image](https://github.com/qwer1227/wireless-network--4-/assets/113608501/cfd617d6-40d4-4d46-8af9-2e83623e8e8d)
 
   push 함수를 통해 realtime데이터베이스에 값이 정상적으로 들어갔음을 보여주는 이미지입니다.
+## test
+  ![흐름](https://github.com/qwer1227/wireless-network--4-/assets/88262512/d64f33d2-00f5-4b47-889a-a616f5b910e1)
+
