@@ -37,7 +37,7 @@
 
 ## 💻개발 환경
 
-JavaScript, db(firebase)
+JavaScript, db(firebase), Python(mediapipe)
 
 ## ✔UI 아이콘 설정
 
@@ -131,12 +131,12 @@ JavaScript, db(firebase)
 
 
 ## 순위 보기
-### 데이터 있는 경우
+### 데이터 없는 경우
 <div align="center">
   <img src="https://github.com/qwer1227/wireless-network--4-/assets/113305463/0dd2f490-9cfb-4ab0-a4ad-06e70ca350ba"/>
 </div>
 
-### 데이터 없는 경우
+### 데이터 있는 경우
 <div>
   <img src="https://github.com/qwer1227/wireless-network--4-/assets/113305463/b53acf82-6d9b-4027-8fb1-bf45bb5e6f5f"/>
 </div>
