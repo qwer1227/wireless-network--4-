@@ -117,3 +117,24 @@ JavaScript, db(firebase)
   <img src="https://github.com/qwer1227/wireless-network--4-/assets/38345593/9ab2e070-9b08-4d0c-9e45-0a00a4a80666"/>
 </div>
 
+## 데이터 흐름도
+<div align="center">
+  <img src="https://github.com/qwer1227/wireless-network--4-/assets/88262512/d64f33d2-00f5-4b47-889a-a616f5b910e1"/>
+</div>
+
+## 최종 실행 화면
+
+### 운동 셋업 설정
+<div align="center">
+  <img src="https://github.com/qwer1227/wireless-network--4-/assets/88262512/7dc41f5c-d5d4-4a06-b4df-6a635a7568d5"/>
+</div>
+
+### 운동 실행 환경
+<div align="center">
+  <img src="https://github.com/qwer1227/wireless-network--4-/assets/88262512/9ea35c2c-b65d-43f8-bf5f-82d1552febaf"/>
+</div>
+
+### 종료 조건 완료후
+<div align="center">
+  <img src="https://github.com/qwer1227/wireless-network--4-/assets/88262512/ac90feaf-316d-49a4-b50f-964cd3cf56f7"/>
+</div>
