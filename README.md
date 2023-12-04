@@ -39,17 +39,17 @@
 
 ## 💻 개발 환경
 - 프론트엔드 (HTTPS Server)
-  - JavaScript
-  - node-static 0.7.11
+  - `JavaScript`
+  - `node-static 0.7.11`
 
 - 백엔드 (Python WebSocket Secure Server)
-  - Python 3.11.3
-  - websockets 12.0
-  - mediapipe 0.10.8
-  - opencv-python 4.8.1.78
+  - `Python 3.11.3`
+  - `websockets 12.0`
+  - `mediapipe 0.10.8`
+  - `opencv-python 4.8.1.78`
 
 - 데이터베이스 (Firebase)
-  - Realtime Database
+  - `Realtime Database`
 
 <br>
 
