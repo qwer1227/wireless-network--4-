@@ -1,5 +1,5 @@
 # 무선네트워크 4조
-💪운동 도우미 시스템
+💪 운동 도우미 시스템
 
 <br>
 
@@ -37,7 +37,7 @@
 
 <br>
 
-## 💻개발 환경
+## 💻 개발 환경
 - 프론트엔드(HTTPS Server)
   - JavaScript
   - node-static 0.7.11
@@ -99,7 +99,7 @@
  
 <br>
 
-## ✔UI 아이콘 설정
+## ✔ UI 아이콘 설정
 ## 메인 화면
 - 운동 선택 버튼 4개(푸쉬업, 스쿼트, 레이즈, 런지) 각각 아이콘으로 표시
 - 4개의 버튼 각각 옆에 점수 버튼을 표시
@@ -124,13 +124,14 @@
 
 </div>
 
-## 전체 UI 화면
+## 🖥️ 전체 UI 화면
 <div align="center">
   <img width="500" src="./ui/전체흐름.PNG"/>
 </div>
 
 <br>
 
+## 📝 데이터베이스
 ## 파이어베이스 SDK모듈 가져오기
   <div align="center">
     <img src="https://github.com/qwer1227/wireless-network--4-/assets/113608501/77445cdb-253f-4004-8090-b7531bfed861" />
@@ -214,7 +215,7 @@
 
 <br>
 
-## 서버 구현
+## 📡 서버 구현
 <div align="center">
   <img src="https://github.com/qwer1227/wireless-network--4-/assets/88262512/d64f33d2-00f5-4b47-889a-a616f5b910e1"/>
 </div>
@@ -229,7 +230,7 @@
 
 <br>
 
-## 최종 실행 화면
+## 🖥️ 최종 실행 화면
 <div align="center">
   <h3>운동 선택 후 목표 횟수, 시간, 점수 등록할 이름 설정</h3>
   <img src="https://github.com/qwer1227/wireless-network--4-/assets/88262512/7dc41f5c-d5d4-4a06-b4df-6a635a7568d5"/>
