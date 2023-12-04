@@ -38,11 +38,11 @@
 <br>
 
 ## 💻 개발 환경
-- 프론트엔드(HTTPS Server)
+- 프론트엔드 (HTTPS Server)
   - JavaScript
   - node-static 0.7.11
 
-- 백엔드(Python WebSocket Secure Server)
+- 백엔드 (Python WebSocket Secure Server)
   - Python 3.11.3
   - websockets 12.0
   - mediapipe 0.10.8
