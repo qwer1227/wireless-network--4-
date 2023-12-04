@@ -49,6 +49,7 @@
   - opencv-python 4.8.1.78
 
 - 데이터베이스 (Firebase)
+  - Realtime Database
 
 <br>
 
