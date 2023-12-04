@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>운동 결과</title>
-    <link rel="stylesheet" href="/css/common.css" />
-    <link rel="stylesheet" href="/css/result.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/result.css" />
   </head>
 
   <body>
@@ -20,8 +20,8 @@
         <ul id="resultList"></ul>
       </div>
       <div class="main-btn">
-        <button onclick="link(`/pages/inputCountAndTime.html?exercise=${exercise}`)">뒤로가기</button>
-        <button onclick="link('/')">메인으로</button>
+        <button onclick="link(`./inputCountAndTime.html?exercise=${exercise}`)">뒤로가기</button>
+        <button onclick="link('../index.html')">메인으로</button>
       </div>
     </div>
 
@@ -93,7 +93,7 @@
     </script>
     <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-database-compat.js"></script>
-    <script src="/js/firebase.js"></script>
+    <script src="../js/firebase.js"></script>
     <script>
       const param = new URLSearchParams(window.location.search); // URL 파라미터
       const exercise = param.get("exercise") ? param.get("exercise") : "pushup"; // 운동 종류
