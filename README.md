@@ -218,7 +218,7 @@
 
 ## 📡 서버 구현
 <div align="center">
-  <img src="https://github.com/qwer1227/wireless-network--4-/assets/88262512/d64f33d2-00f5-4b47-889a-a616f5b910e1"/>
+  <img src="https://github.com/qwer1227/wireless-network--4-/assets/38345593/72ba9a33-9e6a-4c76-a455-eaae07c6ba1e"/>
 </div>
 
 1. 클라이언트가 운동 도우미 시스템의 웹 서버에게 운동 도우미 시스템의 웹 페이지를 요청합니다.
