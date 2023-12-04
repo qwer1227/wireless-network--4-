@@ -138,7 +138,8 @@
     <img src="https://github.com/qwer1227/wireless-network--4-/assets/113608501/77445cdb-253f-4004-8090-b7531bfed861" />
     <br>
     <br>
-    <p>Firebase 모듈에서 initializeApp 함수를 가져와 Firebase 앱을 초기화하고, 데이터베이스 조작을 위해 필요한 함수들을 가져옵니다.</p>
+    <p>Firebase 모듈에서 initializeApp 함수를 가져와 Firebase 앱을 초기화 후</p>
+    <p>데이터베이스 조작을 위해 필요한 함수들을 가져옵니다.</p>
   </div>
 
 <br>
@@ -148,10 +149,8 @@
     <img src="https://github.com/qwer1227/wireless-network--4-/assets/113608501/6603cf5a-bc7b-491f-9800-b24a07f8eb8b" />
     <br>
     <br>
-    <p>
-      Firebase 앱을 초기화할 때 필요한 설정 정보를 담은 객체입니다. <br>
-      이 정보는 Firebase 프로젝트 설정에서 얻을 수 있으며 API 키, 프로젝트 ID, 데이터베이스 URL 등이 포함되어 있습니다.
-    </p>
+    <p>Firebase 앱을 초기화할 때 필요한 설정 정보를 담은 객체입니다.</p>
+    <p>이 정보는 Firebase 프로젝트 설정에서 얻을 수 있으며 API 키, 프로젝트 ID, 데이터베이스 URL 등이 포함되어 있습니다.</p>
   </div>
 
 <br>
