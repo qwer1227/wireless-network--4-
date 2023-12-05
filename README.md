@@ -238,21 +238,6 @@
 
 <br>
 
-## 순위 보기
-### 데이터 없는 경우
-<div align="center">
-  <img src="https://github.com/qwer1227/wireless-network--4-/assets/113305463/0dd2f490-9cfb-4ab0-a4ad-06e70ca350ba"/>
-</div>
-
-<br>
-
-### 데이터 있는 경우
-<div align="center">
-  <img src="https://github.com/qwer1227/wireless-network--4-/assets/113305463/b53acf82-6d9b-4027-8fb1-bf45bb5e6f5f"/>
-</div>
-
-<br>
-
 ### 결과 페이지
 <div align="center">
   <img src="https://github.com/qwer1227/wireless-network--4-/assets/113305463/7a619102-adff-4f54-94ab-8061e64f7703"/>
@@ -271,4 +256,19 @@
 ### 종료 조건: 목표시간 도달 -> 종료 뒤 자신의 기록 저장 후 순위 출력 
 <div align="center">
   <img src="https://github.com/qwer1227/wireless-network--4-/assets/88262512/ac90feaf-316d-49a4-b50f-964cd3cf56f7"/>
+</div>
+
+<br>
+
+## 순위 보기
+### 데이터 없는 경우
+<div align="center">
+  <img src="https://github.com/qwer1227/wireless-network--4-/assets/113305463/0dd2f490-9cfb-4ab0-a4ad-06e70ca350ba"/>
+</div>
+
+<br>
+
+### 데이터 있는 경우
+<div align="center">
+  <img src="https://github.com/qwer1227/wireless-network--4-/assets/113305463/b53acf82-6d9b-4027-8fb1-bf45bb5e6f5f"/>
 </div>
