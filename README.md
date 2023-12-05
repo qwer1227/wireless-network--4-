@@ -238,13 +238,6 @@
 
 <br>
 
-### 결과 페이지
-<div align="center">
-  <img src="https://github.com/qwer1227/wireless-network--4-/assets/113305463/7a619102-adff-4f54-94ab-8061e64f7703"/>
-</div>
-
-<br>
-
 ### 운동 실행 화면
 <div align="center">
   <img src="https://github.com/qwer1227/wireless-network--4-/assets/88262512/9ea35c2c-b65d-43f8-bf5f-82d1552febaf"/>
@@ -271,4 +264,11 @@
 ### 데이터 있는 경우
 <div align="center">
   <img src="https://github.com/qwer1227/wireless-network--4-/assets/113305463/b53acf82-6d9b-4027-8fb1-bf45bb5e6f5f"/>
+</div>
+
+<br>
+
+### 결과 페이지
+<div align="center">
+  <img src="https://github.com/qwer1227/wireless-network--4-/assets/113305463/7a619102-adff-4f54-94ab-8061e64f7703"/>
 </div>
